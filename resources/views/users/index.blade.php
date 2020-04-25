@@ -6,6 +6,7 @@
 
 {{-- @yield('content')に以下の内容を表示 --}}
 @section('content')
+  <a href="/user/create">新規作成</a>
   <table>
     <tr>
       <th>ユーザー名</th>

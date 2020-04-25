@@ -32,7 +32,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -43,7 +43,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User;
+        $user->name = $request->name;
+        $user->full_name = $request->full_name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->admin = $request->admin;
+        $user->save();
+        return redirect('user/'.$user->id);
     }
 
     /**
@@ -67,7 +74,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('users.edit', ['user' => $user]);
     }
 
     /**
@@ -79,17 +87,27 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$user = new User;
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->full_name = $request->full_name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->admin = $request->admin;
+        $user->save();
+        return redirect('user/'.$user->id);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function logicDelete($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete_flg = 1;
+        $user->save();
+
+        //一覧画面に戻る
+        $query = User::query();
+        $query -> where('delete_flg',0);
+        $users = $query->get();
+        return view('users.index', ['users' => $users]);
     }
 }

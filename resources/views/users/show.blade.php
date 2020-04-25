@@ -6,6 +6,7 @@
 
 {{-- @yield('content')に以下の内容を表示 --}}
 @section('content')
+  <a href="/user">ユーザ一覧へ</a>
   <table>
     <tr>
       <th>ユーザー名：</th>
@@ -27,6 +28,13 @@
         @else
           <?php echo "権限なし"; ?>
         @endif
+      </td>
+    </tr>
+    <tr>
+      <th>操作：</th>
+      <td>
+        <a href="/user/{{$user->id}}/edit">編集</a>
+        <a href="/user/{{$user->id}}/logicDelete">削除</a>
       </td>
     </tr>
 @endsection
