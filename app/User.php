@@ -10,6 +10,14 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public static $validateRule = [
+        'name' => 'required',
+        'full_name' => 'required',
+        'email' => 'required|email',
+        'password' => 'required|confirmed',
+        'password_confirmation' => 'required',
+    ];
+
     /**
      * The attributes that are mass assignable.
      *

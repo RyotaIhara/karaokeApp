@@ -2,12 +2,21 @@
 @extends('layouts.application')
 
 {{-- @yield('title')にテンプレートごとにtitleを入力 --}}
-@section('title', 'ユーザ追加；')
+@section('title', 'ユーザ追加')
 
 {{-- @yield('content')に以下の内容を表示 --}}
 @section('content')
   <h1>追加画面</h1>
   <a href="/user">ユーザ一覧へ</a>
+  @if (count($errors))
+      <div>
+        <ul>
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+  @endif
   <form action="{{ route("user.store") }}" method="post"> 
     <table>
       @csrf
@@ -26,6 +35,10 @@
       <tr>
         <th>パスワード: </th>
         <td><input type="password" name="password"></td>
+      </tr>
+      <tr>
+        <th>パスワード（確認）: </th>
+        <td><input type="password" name="password_confirmation"></td>
       </tr>
       <tr>
         <th>権限: </th>

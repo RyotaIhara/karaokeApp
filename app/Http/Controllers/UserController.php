@@ -43,6 +43,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        // エラーチェック
+        $this->validate($request, User::$validateRule);
+
         $user = new User;
         $user->name = $request->name;
         $user->full_name = $request->full_name;
@@ -87,6 +90,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // エラーチェック
+        $this->validate($request, User::$validateRule);
+
         //$user = new User;
         $user = User::find($id);
         $user->name = $request->name;
