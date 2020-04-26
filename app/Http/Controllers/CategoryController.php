@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\User;
+use App\Category;
 
-class UserController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +16,13 @@ class UserController extends Controller
     public function index()
     {
         //条件追加のためのクエリーを生成
-        $query = User::query();
+        $query = Category::query();
         //条件追加
         $query -> where('delete_flg',0);
         //要素を取得
-        $users = $query->get();
+        $categories = $query->get();
 
-        return view('users.index', ['users' => $users]);
+        return view('categories.index', ['categories' => $categories]);
     }
 
     /**
@@ -32,7 +32,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('categories.create');
     }
 
     /**
@@ -44,16 +44,13 @@ class UserController extends Controller
     public function store(Request $request)
     {
         // エラーチェック
-        $this->validate($request, User::$validateRule);
+        $this->validate($request, Category::$validateRule);
 
-        $user = new User;
-        $user->name = $request->name;
-        $user->full_name = $request->full_name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->admin = $request->admin;
-        $user->save();
-        return redirect('user/'.$user->id);
+        $category = new Category;
+        $category->name = $request->name;
+        $category->remark = $request->remark;
+        $category->save();
+        return redirect('category/'.$category->id);
     }
 
     /**
@@ -65,8 +62,8 @@ class UserController extends Controller
     public function show($id)
     {
         //条件追加のためのクエリーを生成
-        $user = User::find($id);
-        return view('users.show', ['user' => $user]);
+        $category = Category::find($id);
+        return view('categories.show', ['category' => $category]);
     }
 
     /**
@@ -77,8 +74,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('users.edit', ['user' => $user]);
+        $category = Category::find($id);
+        return view('categories.edit', ['category' => $category]);
     }
 
     /**
@@ -91,29 +88,25 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         // エラーチェック
-        $this->validate($request, User::$validateRule);
+        $this->validate($request, Category::$validateRule);
 
-        //$user = new User;
-        $user = User::find($id);
-        $user->name = $request->name;
-        $user->full_name = $request->full_name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->admin = $request->admin;
-        $user->save();
-        return redirect('user/'.$user->id);
+        $category = Category::find($id);
+        $category->name = $request->name;
+        $category->remark = $request->remark;
+        $category->save();
+        return redirect('category/'.$category->id);
     }
 
     public function logicDelete($id)
     {
-        $user = User::find($id);
-        $user->delete_flg = 1;
-        $user->save();
+        $category = Category::find($id);
+        $category->delete_flg = 1;
+        $category->save();
 
         //一覧画面に戻る
-        $query = User::query();
+        $query = Category::query();
         $query -> where('delete_flg',0);
-        $users = $query->get();
-        return view('users.index', ['users' => $users]);
+        $categories = $query->get();
+        return view('categories.index', ['categories' => $categories]);
     }
 }
