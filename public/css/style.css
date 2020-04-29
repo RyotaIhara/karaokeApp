@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+body{
+  color: rgb(240, 17, 17);
+  font-size: 1.6rem;
+}
+
+/* ページ遷移ボタン */
+.toCreatePage{
+  margin-bottom: 20px;
+}
+.toIndexPage {
+  margin-bottom: 20px;
+}
+.toShowPage {
+  margin-bottom: 20px;
+}

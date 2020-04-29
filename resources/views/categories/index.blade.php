@@ -6,19 +6,28 @@
 
 {{-- @yield('content')に以下の内容を表示 --}}
 @section('content')
-  <a href="/category/create">カテゴリ新規作成</a>
-  <table>
-    <tr>
-      <th>カテゴリ名</th>
-      <th>備考</th>
-    </tr>
-    @foreach ($categories as $category)
+  <div class="toCreatePage">
+    <a class="btn btn-success" href="/category/create">カテゴリ新規作成</a>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>カテゴリ名</th>
+        <th>備考</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($categories as $category)
         <tr>
           <td>{{ $category -> name }}</td>
           <td>{{ $category -> remark }}</td>
           <td>
-            <a href="/category/{{$category->id}}">詳細を表示</a>
+            <a class="btn btn-primary" href="/category/{{$category->id}}">詳細</a>
+            <a class="btn btn btn-danger" href="/category/{{$category->id}}/logicDelete">削除</a>
           </td>
         </tr>
-    @endforeach
+      @endforeach
+      </tbody>
+    </table>
 @endsection
