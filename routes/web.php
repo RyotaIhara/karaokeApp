@@ -26,3 +26,6 @@ Route::get('user/{id}/logicDelete', 'UserController@logicDelete');
 
 Route::resource('category', 'CategoryController', ['except' => ['destroy']]);
 Route::get('category/{id}/logicDelete', 'CategoryController@logicDelete');
+
+Route::resource('scene', 'SceneController', ['except' => ['destroy']]);
+Route::get('scene/{id}/logicDelete', 'SceneController@logicDelete');

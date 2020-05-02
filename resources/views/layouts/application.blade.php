@@ -53,8 +53,8 @@
                     場面関係
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">場面一覧</a>
-                  <a class="dropdown-item" href="#">場面新規登録</a>
+                  <a class="dropdown-item" href="/scene">場面一覧</a>
+                  <a class="dropdown-item" href="/scene/create">場面新規登録</a>
               </div>
             </li>
           </ul>
