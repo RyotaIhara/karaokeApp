@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateScenesTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateScenesTable extends Migration
      */
     public function up()
     {
-        Schema::create('scenes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->uniqe();
-            $table->string('remark');
+        Schema::create('users', function (Blueprint $table) {
+            $table->increments('user_id');
+            $table->string('user_name', 100)->uniqe();
+            $table->string('user_full_name', 100);
+            $table->string('password', 100);
+            $table->string('email', 100)->uniqe();
+            $table->boolean('admin')->default(false);
             $table->boolean('delete_flg')->default(false);
             $table->timestamps();
         });
@@ -29,6 +32,6 @@ class CreateScenesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('scenes');
+        Schema::dropIfExists('users');
     }
 }
