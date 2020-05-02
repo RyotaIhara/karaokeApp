@@ -11,8 +11,8 @@ class User extends Authenticatable
     use Notifiable;
 
     public static $validateRule = [
-        'name' => 'required',
-        'full_name' => 'required',
+        'user_name' => 'required',
+        'user_full_name' => 'required',
         'email' => 'required|email',
         'password' => 'required|confirmed',
         'password_confirmation' => 'required',
@@ -24,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'user_name', 'user_full_name', 'email', 'password', 'admin'
     ];
 
     /**

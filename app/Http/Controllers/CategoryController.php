@@ -47,9 +47,12 @@ class CategoryController extends Controller
         $this->validate($request, Category::$validateRule);
 
         $category = new Category;
-        $category->name = $request->name;
-        $category->remark = $request->remark;
-        $category->save();
+        // $category->name = $request->name;
+        // $category->remark = $request->remark;
+        // $category->save();
+        $form = $request->all();
+        unset($form['_token']);
+        $category->fill($form)->save();
         return redirect('category/'.$category->id);
     }
 
@@ -91,9 +94,12 @@ class CategoryController extends Controller
         $this->validate($request, Category::$validateRule);
 
         $category = Category::find($id);
-        $category->name = $request->name;
-        $category->remark = $request->remark;
-        $category->save();
+        // $category->name = $request->name;
+        // $category->remark = $request->remark;
+        // $category->save();
+        $form = $request->all();
+        unset($form['_token']);
+        $category->fill($form)->save();
         return redirect('category/'.$category->id);
     }
 

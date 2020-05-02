@@ -35,8 +35,8 @@
                     ユーザー関係
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">ユーザ一覧</a>
-                  <a class="dropdown-item" href="#">ユーザ新規登録</a>
+                  <a class="dropdown-item" href="/user">ユーザ一覧</a>
+                  <a class="dropdown-item" href="/user/create">ユーザ新規登録</a>
               </div>
             </li>
             <li class="nav-item dropdown">

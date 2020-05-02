@@ -47,9 +47,11 @@ class SceneController extends Controller
         $this->validate($request, Scene::$validateRule);
 
         $scene = new Scene;
-        $scene->name = $request->name;
-        $scene->remark = $request->remark;
-        $scene->save();
+        // $scene->name = $request->name;
+        // $scene->remark = $request->remark;
+        $form = $request->all();
+        unset($form['_token']);
+        $scene->fill($form)->save();
         return redirect('scene/'.$scene->id);
     }
 
@@ -91,9 +93,12 @@ class SceneController extends Controller
         $this->validate($request, Scene::$validateRule);
 
         $scene = Scene::find($id);
-        $scene->name = $request->name;
-        $scene->remark = $request->remark;
-        $scene->save();
+        // $scene->name = $request->name;
+        // $scene->remark = $request->remark;
+        // $scene->save();
+        $form = $request->all();
+        unset($form['_token']);
+        $scene->fill($form)->save();
         return redirect('scene/'.$scene->id);
     }
 

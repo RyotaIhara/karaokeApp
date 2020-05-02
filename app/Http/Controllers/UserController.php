@@ -47,12 +47,14 @@ class UserController extends Controller
         $this->validate($request, User::$validateRule);
 
         $user = new User;
-        $user->name = $request->name;
-        $user->full_name = $request->full_name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->admin = $request->admin;
-        $user->save();
+        // $user->name = $request->name;
+        // $user->full_name = $request->full_name;
+        // $user->email = $request->email;
+        // $user->password = $request->password;
+        // $user->admin = $request->admin;
+        $form = $request->all();
+        unset($form['_token']);
+        $user->fill($form)->save();
         return redirect('user/'.$user->id);
     }
 
@@ -95,12 +97,15 @@ class UserController extends Controller
 
         //$user = new User;
         $user = User::find($id);
-        $user->name = $request->name;
-        $user->full_name = $request->full_name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->admin = $request->admin;
-        $user->save();
+        // $user->name = $request->name;
+        // $user->full_name = $request->full_name;
+        // $user->email = $request->email;
+        // $user->password = $request->password;
+        // $user->admin = $request->admin;
+        \error_log($request);
+        $form = $request->all();
+        unset($form['_token']);
+        $user->fill($form)->save();
         return redirect('user/'.$user->id);
     }
 

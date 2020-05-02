@@ -2,11 +2,11 @@
 @extends('layouts.application')
 
 {{-- @yield('title')にテンプレートごとにtitleを入力 --}}
-@section('title', '場面編集；')
+@section('title', '場面編集')
 
 {{-- @yield('content')に以下の内容を表示 --}}
 @section('content')
-  <h1>編集画面</h1>
+  <h1>場面編集画面</h1>
   <div class="toShowPage">
     <a class="btn btn-success" href="/scene/{{$scene->id}}">詳細画面に戻る</a>
   </div>
@@ -26,13 +26,13 @@
     <div class="form-group row">
       <label for="staticEmail" class="col-sm-2 col-form-label">場面: </label>
       <div class="col-sm-10">
-        <input type="text" name="name" class="form-control" value="{{$scene->name}}">
+        <input type="text" name="scene_name" class="form-control" value="{{$scene->scene_name}}">
       </div>
     </div>
     <div class="form-group row">
       <label for="Password" class="col-sm-2 col-form-label">備考: </label>
       <div class="col-sm-10">
-        <textarea name="remark" class="form-control" rows="5">{{$scene->remark}}</textarea> 
+        <textarea name="scene_remark" class="form-control" rows="5">{{$scene->scene_remark}}</textarea> 
       </div>
     </div>
     <!--<input type="submit" value="送信">-->

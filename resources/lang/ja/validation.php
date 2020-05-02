@@ -105,10 +105,19 @@ return [
 
     'attributes' => [
         // 今回追加した項目
-        'name' => 'ユーザー名',
-        'full_name' => '氏名',
+        // ユーザー
+        'user_name' => 'ユーザー名',
+        'user_full_name' => '氏名',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
+
+        // カテゴリー
+        'category_name' => 'カテゴリー名',
+        'category_remark' => '備考',
+
+        // 場面
+        'scene_name' => '場面',
+        'scene_remark' => '備考',
     ],
 
 ];

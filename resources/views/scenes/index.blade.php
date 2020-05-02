@@ -20,8 +20,8 @@
     <tbody>
       @foreach ($scenes as $scene)
         <tr>
-          <td>{{ $scene -> name }}</td>
-          <td>{{ $scene -> remark }}</td>
+          <td>{{ $scene -> scene_name }}</td>
+          <td>{{ $scene -> scene_remark }}</td>
           <td>
             <a class="btn btn-primary" href="/scene/{{$scene->id}}">詳細</a>
             <a class="btn btn btn-danger" href="/scene/{{$scene->id}}/logicDelete">削除</a>

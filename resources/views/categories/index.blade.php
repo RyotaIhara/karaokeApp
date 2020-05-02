@@ -20,8 +20,8 @@
     <tbody>
       @foreach ($categories as $category)
         <tr>
-          <td>{{ $category -> name }}</td>
-          <td>{{ $category -> remark }}</td>
+          <td>{{ $category -> category_name }}</td>
+          <td>{{ $category -> category_remark }}</td>
           <td>
             <a class="btn btn-primary" href="/category/{{$category->id}}">詳細</a>
             <a class="btn btn btn-danger" href="/category/{{$category->id}}/logicDelete">削除</a>

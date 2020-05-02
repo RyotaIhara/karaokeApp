@@ -22,8 +22,8 @@
     <tbody>
       @foreach ($users as $user)
           <tr>
-            <td>{{ $user -> name }}</td>
-            <td>{{ $user -> full_name }}</td>
+            <td>{{ $user -> user_name }}</td>
+            <td>{{ $user -> user_full_name }}</td>
             <td>{{ $user -> email }}</td>
             <td>
               @if ($user -> admin == 1)

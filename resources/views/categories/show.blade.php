@@ -12,11 +12,11 @@
   <table class="table table-bordered">
     <tr>
       <th width="20%">カテゴリ名</th>
-      <td width="80%">{{ $category -> name }}</td>
+      <td width="80%">{{ $category -> category_name }}</td>
     </tr>
     <tr>
       <th width="20%" height="150">備考</th>
-      <td width="80%" height="150">{{ $category -> remark }}</td>
+      <td width="80%" height="150">{{ $category -> category_remark }}</td>
     </tr>
   </table>
   <a class="btn btn-primary" href="/category/{{$category->id}}/edit">編集</a>

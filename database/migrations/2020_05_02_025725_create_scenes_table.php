@@ -14,7 +14,7 @@ class CreateScenesTable extends Migration
     public function up()
     {
         Schema::create('scenes', function (Blueprint $table) {
-            $table->increments('scene_id');
+            $table->increments('id');
             $table->string('scene_name', 100)->uniqe();
             $table->string('scene_remark', 200)->nullable();
             $table->boolean('delete_flg')->default(false);

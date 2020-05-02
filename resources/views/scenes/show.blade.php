@@ -12,11 +12,11 @@
   <table class="table table-bordered">
     <tr>
       <th width="20%">場面</th>
-      <td width="80%">{{ $scene -> name }}</td>
+      <td width="80%">{{ $scene -> scene_name }}</td>
     </tr>
     <tr>
       <th width="20%" height="150">備考</th>
-      <td width="80%" height="150">{{ $scene -> remark }}</td>
+      <td width="80%" height="150">{{ $scene -> scene_remark }}</td>
     </tr>
   </table>
   <a class="btn btn-primary" href="/scene/{{$scene->id}}/edit">編集</a>

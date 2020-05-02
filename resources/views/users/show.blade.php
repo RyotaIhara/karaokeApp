@@ -12,11 +12,11 @@
   <table class="table table-bordered">
     <tr>
       <th width="20%">ユーザー名：</th>
-      <td width="80%">{{ $user -> name }}</td>
+      <td width="80%">{{ $user -> user_name }}</td>
     </tr>
     <tr>
       <th width="20%">フルネーム：</th>
-      <td width="80%">{{ $user -> full_name }}</td>
+      <td width="80%">{{ $user -> user_full_name }}</td>
     </tr>
     <tr>
       <th width="20%">メールアドレス：</th>
