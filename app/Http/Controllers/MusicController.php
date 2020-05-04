@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Music;
 use App\User;
+use App\Scene;
+use App\Category;
 
-class UserController extends Controller
+class MusicController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +19,13 @@ class UserController extends Controller
     public function index()
     {
         //条件追加のためのクエリーを生成
-        $query = User::query();
+        $query = Music::query();
         //条件追加
         $query -> where('delete_flg',0);
         //要素を取得
-        $users = $query->get();
+        $musics = $query->get();
 
-        return view('users.index', ['users' => $users]);
+        return view('musics.index', ['musics' => $musics]);
     }
 
     /**
@@ -32,7 +35,20 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $query = Category::query();
+        $query -> where('delete_flg',0);
+        $categories = $query->get();
+
+        $query = Scene::query();
+        $query -> where('delete_flg',0);
+        $scenes = $query->get();
+
+        $items = [
+            'categories' => $categories,
+            'scenes' => $scenes
+        ];
+
+        return view('musics.create', $items);
     }
 
     /**
@@ -44,18 +60,14 @@ class UserController extends Controller
     public function store(Request $request)
     {
         // エラーチェック
-        $this->validate($request, User::$validateRule);
+        //$this->validate($request, Music::$validateRule);
 
-        $user = new User;
-        // $user->name = $request->name;
-        // $user->full_name = $request->full_name;
-        // $user->email = $request->email;
-        // $user->password = $request->password;
-        // $user->admin = $request->admin;
+        $music = new Music;
         $form = $request->all();
         unset($form['_token']);
-        $user->fill($form)->save();
-        return redirect('user/'.$user->id);
+        $music->user_id = 1;
+        $music->fill($form)->save();
+        return redirect('music/'.$music->id);
     }
 
     /**
@@ -67,8 +79,8 @@ class UserController extends Controller
     public function show($id)
     {
         //条件追加のためのクエリーを生成
-        $user = User::find($id);
-        return view('users.show', ['user' => $user]);
+        $music = Music::find($id);
+        return view('musics.show', ['music' => $music]);
     }
 
     /**
@@ -79,8 +91,23 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('users.edit', ['user' => $user]);
+        $music = Music::find($id);
+
+        $query = Category::query();
+        $query -> where('delete_flg',0);
+        $categories = $query->get();
+
+        $query = Scene::query();
+        $query -> where('delete_flg',0);
+        $scenes = $query->get();
+
+        $items = [
+            'music' => $music,
+            'categories' => $categories,
+            'scenes' => $scenes
+        ];
+
+        return view('musics.edit', $items);
     }
 
     /**
@@ -93,25 +120,25 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         // エラーチェック
-        $this->validate($request, User::$validateRule);
+        //$this->validate($request, Music::$validateRule);
 
-        $user = User::find($id);
+        $music = Music::find($id);
         $form = $request->all();
         unset($form['_token']);
-        $user->fill($form)->save();
-        return redirect('user/'.$user->id);
+        $music->fill($form)->save();
+        return redirect('music/'.$music->id);
     }
 
     public function logicDelete($id)
     {
-        $user = User::find($id);
-        $user->delete_flg = 1;
-        $user->save();
+        $music = Music::find($id);
+        $music->delete_flg = 1;
+        $music->save();
 
         //一覧画面に戻る
-        $query = User::query();
+        $query = Music::query();
         $query -> where('delete_flg',0);
-        $users = $query->get();
-        return view('users.index', ['users' => $users]);
+        $musics = $query->get();
+        return view('musics.index', ['musics' => $musics]);
     }
 }

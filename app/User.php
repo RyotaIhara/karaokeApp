@@ -18,6 +18,10 @@ class User extends Authenticatable
         'password_confirmation' => 'required',
     ];
 
+    public function musics() {
+        return $this->hasMany('App\Music');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

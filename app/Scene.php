@@ -10,6 +10,10 @@ class Scene extends Model
         'scene_name' => 'required',
     ];
 
+    public function musics() {
+        return $this->hasMany('App\Music');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

@@ -29,3 +29,6 @@ Route::get('category/{id}/logicDelete', 'CategoryController@logicDelete');
 
 Route::resource('scene', 'SceneController', ['except' => ['destroy']]);
 Route::get('scene/{id}/logicDelete', 'SceneController@logicDelete');
+
+Route::resource('music', 'MusicController', ['except' => ['destroy']]);
+Route::get('music/{id}/logicDelete', 'MusicController@logicDelete');
