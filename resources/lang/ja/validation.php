@@ -118,6 +118,11 @@ return [
         // 場面
         'scene_name' => '場面',
         'scene_remark' => '備考',
+
+        //曲
+        'music_title' => '曲名',
+        'artist' => 'アーティスト',
+        'key' => 'キー',
     ],
 
 ];

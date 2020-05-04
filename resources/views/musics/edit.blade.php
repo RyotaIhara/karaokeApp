@@ -2,11 +2,11 @@
 @extends('layouts.application')
 
 {{-- @yield('title')にテンプレートごとにtitleを入力 --}}
-@section('title', '曲追加')
+@section('title', '曲編集')
 
 {{-- @yield('content')に以下の内容を表示 --}}
 @section('content')
-  <h1>曲追加画面</h1>
+  <h1>曲編集画面</h1>
   <div class="toIndexPage">
     <a class="btn btn-success" href="/music">曲一覧へ</a>
   </div>
@@ -57,19 +57,19 @@
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">時間: </label>
       <div class="col-sm-10">
-        <input type="time" step="1" name="time" class="form-control" value="{{$music->time}} ">
+        <input type="time" step="1" name="time" class="form-control" value="{{$music->time}}">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">最高得点: </label>
       <div class="col-sm-10">
-        <input type="text" name="high_score" class="form-control" value="{{$music->high_score}}">
+        <input type="number" name="high_score" class="form-control" value="{{number_format($music -> high_score,3)}}">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">平均得点: </label>
       <div class="col-sm-10">
-        <input type="text" name="average_score" class="form-control" value="{{$music->average_score}}">
+        <input type="number" name="average_score" class="form-control" value="{{number_format($music -> average_score,3)}}">
       </div>
     </div>
     <div class="form-group row">
@@ -81,7 +81,13 @@
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">備考: </label>
       <div class="col-sm-10">
-        <input type="text" name="music_remark" class="form-control" value="{{$music->music_remark}}">
+        <textarea name="music_remark" class="form-control" rows="5">{{$music->music_remark}}</textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">お気に入り: </label>
+      <div class="col-sm-10">
+        <input type="checkbox" name="favorite_flg" value="1" {{ $music->favorite_flg === 1? 'checked="checked"' : '' }}>
       </div>
     </div>
     <button type="submit" class="btn btn-primary">送信</button>

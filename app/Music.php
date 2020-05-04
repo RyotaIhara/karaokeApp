@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Music extends Model
 {
+    public static $validateRule = [
+        'music_title' => 'required',
+        'artist' => 'required',
+        'key' => 'required',
+    ];
+
     public function user() {
         return $this->belongsTo('App\User');
     }
@@ -25,6 +31,6 @@ class Music extends Model
      */
     protected $fillable = [
         'user_id','category_id','scene_id','music_title','artist',
-        'music_remark','time','high_score','average_score','key',
+        'music_remark','time','high_score','average_score','key','favorite_flg',
     ];
 }

@@ -32,19 +32,29 @@
     </tr>
     <tr>
       <th width="20%">最高得点</th>
-      <td width="80%">{{ $music -> high_score }}</td>
+      <td width="80%">{{ number_format($music -> high_score,3) }}</td>
     </tr>
     <tr>
       <th width="20%">平均得点</th>
-      <td width="80%">{{ $music -> average_score }}</td>
+      <td width="80%">{{ number_format($music -> average_score,3) }}</td>
     </tr>
     <tr>
       <th width="20%">キー</th>
       <td width="80%">{{ $music -> key }}</td>
     </tr>
     <tr>
-      <th width="20%">備考</th>
-      <td width="80%">{{ $music -> music_remark }}</td>
+      <th width="20%" height="150">備考</th>
+      <td width="80%" height="150">{{ $music -> music_remark }}</td>
+    </tr>
+    <tr>
+      <th width="20%">お気に入り</th>
+      <td width="80%">
+        @if ($music -> favorite_flg == 1)
+          <?php echo "○"; ?>
+        @else
+          <?php echo "-"; ?>
+        @endif
+      </td>
     </tr>
   </table>
   <a class="btn btn-primary" href="/music/{{$music->id}}/edit">編集</a>

@@ -62,25 +62,31 @@
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">最高得点: </label>
       <div class="col-sm-10">
-        <input type="text" name="high_score" class="form-control">
+        <input type="number" name="high_score" class="form-control">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">平均得点: </label>
       <div class="col-sm-10">
-        <input type="text" name="average_score" class="form-control">
+        <input type="number" name="average_score" class="form-control">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">キー: </label>
       <div class="col-sm-10">
-        <input type="text" name="key" class="form-control">
+        <input type="text" name="key" class="form-control" value="0">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">備考: </label>
       <div class="col-sm-10">
-        <input type="text" name="music_remark" class="form-control">
+        <textarea name="music_remark" class="form-control" rows="5"></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">お気に入り: </label>
+      <div class="col-sm-10">
+        <input type="checkbox" name="favorite_flg" value="1">
       </div>
     </div>
     <button type="submit" class="btn btn-primary">送信</button>
