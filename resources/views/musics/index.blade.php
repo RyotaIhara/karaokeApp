@@ -33,8 +33,7 @@
           <td>{{ $music -> key }}</td>
           <td>
             <a class="btn btn-primary" href="/music/{{$music->id}}">詳細</a>
-            <button type="button" class="delete-confirm btn btn-danger" value="A003" data-toggle="modal" data-target="#confirm-delete2">削除</button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirm-delete" data-whatever="{{$music->id}}">削除ーー</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete" data-whatever="{{$music->id}}">削除</button>
           </td>
         </tr>
       @endforeach
@@ -51,7 +50,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 class="modal-title"></h5>
+              <h5 class="modal-title">確認</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
               </button>
@@ -61,7 +60,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">いいえ</button>
-              <a class="btn btn-success" id="parse" href="" name="deletebtn">はい</a>
+            <a class="btn btn-success" id="parse" href="" name="deletebtn">はい</a>
           </div>
       </div>
     </div>
