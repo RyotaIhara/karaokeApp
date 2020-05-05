@@ -32,3 +32,4 @@ Route::get('scene/{id}/logicDelete', 'SceneController@logicDelete');
 
 Route::resource('music', 'MusicController', ['except' => ['destroy']]);
 Route::get('music/{id}/logicDelete', 'MusicController@logicDelete');
+Route::post('music/search', 'MusicController@search');

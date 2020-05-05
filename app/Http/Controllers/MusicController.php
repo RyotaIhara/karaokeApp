@@ -25,7 +25,21 @@ class MusicController extends Controller
         //要素を取得
         $musics = $query->get();
 
-        return view('musics.index', ['musics' => $musics]);
+        $query = Category::query();
+        $query -> where('delete_flg',0);
+        $categories = $query->get();
+
+        $query = Scene::query();
+        $query -> where('delete_flg',0);
+        $scenes = $query->get();
+
+        $items = [
+            'musics' => $musics,
+            'categories' => $categories,
+            'scenes' => $scenes
+        ];
+
+        return view('musics.index', $items);
     }
 
     /**
@@ -129,6 +143,7 @@ class MusicController extends Controller
         return redirect('music/'.$music->id);
     }
 
+    // 論理削除用メソッド
     public function logicDelete($id)
     {
         $music = Music::find($id);
@@ -139,6 +154,51 @@ class MusicController extends Controller
         $query = Music::query();
         $query -> where('delete_flg',0);
         $musics = $query->get();
-        return view('musics.index', ['musics' => $musics]);
+
+        $query = Category::query();
+        $query -> where('delete_flg',0);
+        $categories = $query->get();
+
+        $query = Scene::query();
+        $query -> where('delete_flg',0);
+        $scenes = $query->get();
+
+        $items = [
+            'musics' => $musics,
+            'categories' => $categories,
+            'scenes' => $scenes
+        ];
+
+        return view('musics.index', $items);
+    }
+
+    // 検索用メソッド
+    public function search(Request $request)
+    {
+        //条件追加のためのクエリーを生成
+        $query = Music::query();
+        //条件追加
+        $query -> where('delete_flg',0);
+        if ($request->music_title != "") {
+            $query -> where('music_title', $request->music_title);
+        }
+        //要素を取得
+        $musics = $query->get();
+
+        $query = Category::query();
+        $query -> where('delete_flg',0);
+        $categories = $query->get();
+
+        $query = Scene::query();
+        $query -> where('delete_flg',0);
+        $scenes = $query->get();
+
+        $items = [
+            'musics' => $musics,
+            'categories' => $categories,
+            'scenes' => $scenes
+        ];
+
+        return view('musics.index', $items);
     }
 }
