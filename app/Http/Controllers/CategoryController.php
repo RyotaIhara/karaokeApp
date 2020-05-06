@@ -21,6 +21,7 @@ class CategoryController extends Controller
         $query -> where('delete_flg',0);
         //要素を取得
         $categories = $query->get();
+        $categories = $query->paginate(10);
 
         return view('categories.index', ['categories' => $categories]);
     }

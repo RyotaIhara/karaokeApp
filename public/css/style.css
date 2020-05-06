@@ -15,3 +15,14 @@ body{
 .toShowPage {
   margin-bottom: 20px;
 }
+
+/* 検索ボタン */
+.searchBtn {
+  width: 80px;
+  margin-left: 10px;
+}
+
+/* align設定 */
+.align-center {
+  text-align: center;
+}

@@ -20,7 +20,8 @@ class UserController extends Controller
         //条件追加
         $query -> where('delete_flg',0);
         //要素を取得
-        $users = $query->get();
+        //$users = $query->get();
+        $users = $query->paginate(10);
 
         return view('users.index', ['users' => $users]);
     }

@@ -8,7 +8,7 @@
 @section('content')
   <div class="toCreatePage">
     <a class="btn btn-success" href="/music/create">曲新規作成</a>
-    <button type="button" class="delete-confirm btn btn-primary" value="A003" data-toggle="modal" data-target="#searchBox">検索</button>
+    <button type="button" class="delete-confirm btn btn-info searchBtn" value="A003" data-toggle="modal" data-target="#searchBox">検索</button>
   </div>
   <table class="table table-striped">
     <thead>
@@ -39,6 +39,8 @@
       @endforeach
     </tbody>
   </table>
+
+  {{ $musics->links() }}
 
   <!-- Modal（検索用） -->
   <div class="modal fade" id="searchBox" tabindex="-1" role="dialog">

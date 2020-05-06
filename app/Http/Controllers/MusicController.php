@@ -23,7 +23,8 @@ class MusicController extends Controller
         //条件追加
         $query -> where('delete_flg',0);
         //要素を取得
-        $musics = $query->get();
+        //$musics = $query->get();
+        $musics = $query->paginate(10);
 
         $query = Category::query();
         $query -> where('delete_flg',0);
@@ -177,13 +178,74 @@ class MusicController extends Controller
     {
         //条件追加のためのクエリーを生成
         $query = Music::query();
-        //条件追加
+        //deleteFlgが立っているものはリストに入れない
         $query -> where('delete_flg',0);
+
+        // 検索条件が入力されていれば追加
+        // 曲名
         if ($request->music_title != "") {
-            $query -> where('music_title', $request->music_title);
+            $query -> where('music_title', 'like', '%'.$request->music_title.'%');
         }
+        // アーティスト　
+        if ($request->artist != "") {
+            $query -> where('artist', 'like', '%'.$request->artist.'%');
+        }
+        // カテゴリー
+        if ($request->category_id != "") {
+            $query -> where('category_id', $request->category_id);
+        }
+        // 場面
+        if ($request->scene_id != "") {
+            $query -> where('scene_id', $request->scene_id);
+        }
+        // 備考
+        if ($request->music_remark != "") {
+            $query -> where('music_remark', 'like', '%'.$request->music_remark.'%');
+        }
+        // 最大得点
+        if ($request->high_score_from != "") {
+            $high_score_from = $request->high_score_from;
+            if ($request->high_score_to != "") {
+                $high_score_to = $request->high_score_to;
+                $query -> whereBetween('high_score', [$high_score_from, $high_score_to]);
+            } else {
+                $query ->where('high_score', '>=', $high_score_from);
+            }
+        } elseif ($request->high_score_to != "") {
+            $high_score_to = $request->high_score_to;
+            $query ->where('high_score', '<=', $high_score_to);
+        }
+        // 平均得点
+        if ($request->average_score_from != "") {
+            $average_score_from = $request->average_score_from;
+            if ($request->average_score_to != "") {
+                $average_score_to = $request->average_score_to;
+                $query -> whereBetween('average_score', [$average_score_from, $average_score_to]);
+            } else {
+                $query ->where('average_score', '>=', $average_score_from);
+            }
+        } elseif ($request->average_score_to != "") {
+            $average_score_to = $request->average_score_to;
+            $query ->where('average_score', '<=', $average_score_to);
+        }
+        // 時間
+        if ($request->time_from != "") {
+            $time_from = $request->time_from;
+            if ($request->time_to != "") {
+                $time_to = $request->time_to;
+                $query ->where('time', '>=', $time_from);
+                $query ->where('time', '<=', $time_to);
+            } else {
+                $query ->where('time', '>=', $time_from);
+            }
+        } elseif ($request->time_to != "") {
+            $time_to = $request->time_to;
+            $query ->where('time', '<=', $time_to);
+        }
+
         //要素を取得
-        $musics = $query->get();
+        //$musics = $query->get();
+        $musics = $query->paginate(10);
 
         $query = Category::query();
         $query -> where('delete_flg',0);

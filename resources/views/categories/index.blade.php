@@ -31,6 +31,8 @@
     </tbody>
   </table>
 
+  {{ $categories->links() }}
+
   <!-- Modal（削除用） -->
   <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog">
     <div class="modal-dialog">
