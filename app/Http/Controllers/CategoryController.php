@@ -20,7 +20,7 @@ class CategoryController extends Controller
         //条件追加
         $query -> where('delete_flg',0);
         //要素を取得
-        $categories = $query->get();
+        // $categories = $query->get();
         $categories = $query->paginate(10);
 
         return view('categories.index', ['categories' => $categories]);
@@ -113,7 +113,8 @@ class CategoryController extends Controller
         //一覧画面に戻る
         $query = Category::query();
         $query -> where('delete_flg',0);
-        $categories = $query->get();
+        // $categories = $query->get();
+        $categories = $query->paginate(10);
         return view('categories.index', ['categories' => $categories]);
     }
 }

@@ -112,7 +112,7 @@ class SceneController extends Controller
         //一覧画面に戻る
         $query = Scene::query();
         $query -> where('delete_flg',0);
-        $scenes = $query->get();
+        $scenes = $query->paginate(10);
         return view('scenes.index', ['scenes' => $scenes]);
     }
 }

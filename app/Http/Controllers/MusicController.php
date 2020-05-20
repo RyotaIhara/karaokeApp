@@ -154,7 +154,8 @@ class MusicController extends Controller
         //一覧画面に戻る
         $query = Music::query();
         $query -> where('delete_flg',0);
-        $musics = $query->get();
+        // $musics = $query->get();
+        $musics = $query->paginate(10);
 
         $query = Category::query();
         $query -> where('delete_flg',0);
