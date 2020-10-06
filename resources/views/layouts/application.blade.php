@@ -34,6 +34,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/music/create">曲新規登録</a>
             </li>
+            <!--
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     ユーザー関係
@@ -43,6 +44,7 @@
                   <a class="dropdown-item" href="/user/create">ユーザ新規登録</a>
               </div>
             </li>
+          -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     カテゴリ関係

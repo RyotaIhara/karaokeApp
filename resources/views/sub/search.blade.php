@@ -79,12 +79,14 @@
             <input type="text" name="music_remark" class="form-control">
           </div>
         </div>
+        <!--
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">お気に入り: </label>
           <div class="col-sm-10">
             <input type="checkbox" name="favorite_flg" value="1">
           </div>
         </div>
+      -->
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary">検索</button>

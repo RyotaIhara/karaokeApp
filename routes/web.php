@@ -21,8 +21,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('user', 'UserController', ['except' => ['destroy']]);
-Route::get('user/{id}/logicDelete', 'UserController@logicDelete');
+//Route::resource('user', 'UserController', ['except' => ['destroy']]);
+//Route::get('user/{id}/logicDelete', 'UserController@logicDelete');
 
 Route::resource('category', 'CategoryController', ['except' => ['destroy']]);
 Route::get('category/{id}/logicDelete', 'CategoryController@logicDelete');
